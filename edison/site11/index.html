@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black&White</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <h2>Black <br> <span>White</span></h2>
+        <div class="black"></div>
+        <img src="text.png">
+    </section>
+    <script>
+        let black = document.querySelector('.black');
+        window.onmousemove = function(e){
+            let x = e.clientX;
+            // let y = e.clientY;
+            black.style.left = x +'px';
+            // black.style.top = y +'px';
+        }
+    </script>
+</body>
+</html>

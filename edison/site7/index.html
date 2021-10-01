@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="banner">
+        <video paused muted id="video">
+            <source src="bg.mp4">
+        </video>
+    </div>
+    <script>
+        let video = document.querySelector('#video');
+        setInterval(function(){
+            video.currentTime = window.pageYOffset / 1000;
+        }, 100);
+    </script>
+</body>
+</html>

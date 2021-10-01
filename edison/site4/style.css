@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow: hidden;
+}
+
+section{
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+}
+
+section span{
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+

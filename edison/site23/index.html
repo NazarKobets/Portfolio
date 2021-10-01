@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="menuToggle" onclick="ToggleMenu()"></div>
+    <div class="navigation">
+        <div class="navArea">
+            <ul>
+                <li>
+                    <a href="#" class="menu-item" onmouseenter="changeImage('image/img1.jpg')" onmouseout="noImage()">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="menu-item" onmouseenter="changeImage('image/img2.jpg')"  onmouseout="noImage()">Album</a>
+                </li>
+                <li>
+                    <a href="#" class="menu-item" onmouseenter="changeImage('image/img3.jpg')"  onmouseout="noImage()">Services</a>
+                </li>
+                <li>
+                    <a href="#" class="menu-item" onmouseenter="changeImage('image/img4.jpg')"  onmouseout="noImage()">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#" class="menu-item" onmouseenter="changeImage('image/img5.jpg')"  onmouseout="noImage()">Team</a>
+                </li>
+                <li>
+                    <a href="#" class="menu-item" onmouseenter="changeImage('image/img6.jpg')"  onmouseout="noImage()">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="imgArea">
+            <img src="image/img1.jpg" id="slide">
+        </div>
+    </div>
+    <!--  -->
+    <script>
+        
+        function ToggleMenu(){
+            const menuToggle = document.querySelector('.menuToggle');
+            menuToggle.classList.toggle('active');
+            // aftet toggle menu
+            const navigation = document.querySelector('.navigation');
+            navigation.classList.toggle('active');
+        }
+        //start
+        function changeImage(anything){
+            document.getElementById('slide').src = anything;
+        }
+        function noImage(){
+            document.getElementById('slide').src = 'image/black.jpg';
+        }
+        //end
+
+        //start without atributes 
+        // let menuItems = document.getElementsByClassName('menu-item');
+        // for(let i = 0; i < menuItems.length; i++){
+        //     menuItems[i].onmouseout = () =>{
+        //         document.getElementById('slide').src = 'image/black.jpg';
+        //     }
+        //     menuItems[i].onmouseenter = () => {
+        //         document.getElementById('slide').src = `image/img${i+1}.jpg`;
+        //     }
+        // }
+        //end without atributes 
+    </script>
+</body>
+</html>

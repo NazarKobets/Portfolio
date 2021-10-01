@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scene active">
+        <!-- <div onclick="toggleScene()" class="moon"></div> -->
+        <div class="moon"></div>
+        <img src="forest.png" class="forest">
+        <img src="bg.png" class="bg">
+        <img src="cloud1.png" class="cloud1">
+        <img src="cloud2.png" class="cloud2">
+        <img src="cloud3.png" class="cloud3">
+        <img src="cloud1.png" class="cloud4">
+        <img src="cloud2.png" class="cloud5">
+        <img src="cloud3.png" class="cloud6">
+    </div>
+    <script>
+        const moonBtn = document.querySelector('.scene .moon');
+        moonBtn.onclick = toggleScene;
+        console.log('1');
+        console.log('2');
+        function toggleScene(){
+            let change = document.querySelector('.scene');
+            change.classList.toggle('active');
+        }
+
+        function stars(){
+            let count = 500;
+            let i = 0;
+            while(i < count){
+                let scene = document.querySelector('.scene');
+                let star = document.createElement('i');
+                let x = Math.floor(Math.random() * window.innerWidth);
+                let y = Math.floor(Math.random() * window.innerHeight);
+                let size = Math.random() * 2;
+
+                let duration = Math.random() * 10;
+
+                star.style.left = x + 'px';
+                star.style.top = y + 'px';
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+
+                star.style.animationDuration = 5 + duration + 's'
+                star.style.animationDelay = duration + 's';
+
+                scene.appendChild(star);
+                i++;
+            }
+        }
+        stars();
+    </script>
+</body>
+</html>

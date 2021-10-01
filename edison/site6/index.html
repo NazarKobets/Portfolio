@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Rain</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section></section>
+    <script>
+        let images = [
+            'url("https://picsum.photos/600/600?random=1")',
+            'url("https://picsum.photos/600/600?random=2")',
+            'url("https://picsum.photos/600/600?random=3")',
+            'url("https://picsum.photos/600/600?random=4")',
+            'url("https://picsum.photos/600/600?random=5")',
+            'url("https://picsum.photos/600/600?random=6")',
+            'url("https://picsum.photos/600/600?random=7")',
+            'url("https://picsum.photos/600/600?random=8")',
+            'url("https://picsum.photos/600/600?random=9")',
+            'url("https://picsum.photos/600/600?random=10")'
+        ];
+
+        function dropImage(){
+            const section = document.querySelector('section');
+            let drop = document.createElement('span');
+            //drop.style.left = Math.random() * innerWidth + 'px';
+            drop.style.top = Math.random() * innerHeight + 'px';
+
+            let bg = images[Math.floor(Math.random() * images.length)];
+
+            let size = Math.random() * 200;
+            drop.style.width = 50 + size + 'px';
+            drop.style.height = 50 + size + 'px';
+            drop.style.background = bg;
+
+            section.appendChild(drop);
+
+            setTimeout( ()=>{
+                drop.remove();
+            }, 6000);
+        }
+
+        setInterval(dropImage, 50);
+        
+        
+    </script>
+</body>
+</html>

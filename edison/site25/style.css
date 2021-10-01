@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #2196f3;
+}
+
+.container .mac{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+.container .mac .imgBx {
+    position: absolute;
+    width: 555px;
+    height: 313px;
+    top: 25px;
+    left: 25px;
+    background: red url(assets/desktopWebsite.jpg);
+    background-position: top;
+    background-size: 100%;
+    transition: background-position 5s linear;
+}
+
+.container .mac:hover .imgBx{
+    background-position: bottom;
+}
+.container .macBook{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    z-index: 1;
+}
+
+.container .macBook .imgBx{
+    position: absolute;
+    top: 20px;
+    left: 72px;
+    width: 465px;
+    height: 290px;
+    background: blue url(assets/desktopWebsite.jpg);
+    background-position: top;
+    background-size: 100%;
+    transition: background-position 5s linear;
+}
+
+.container .macBook:hover .imgBx{
+    background-position: bottom;
+}
+
+.container .iphone{
+    position: absolute;
+    top: 40%;
+    left: 12%;
+    z-index: 2;
+    width: 245px;
+}
+
+.container .iphone .imgBx{
+    position: absolute;
+    top: 46px;
+    left: 44px;
+    width: 157px;
+    height: 282px;
+    background: green url(assets/mobileWebsite.jpg);
+    background-position: top;
+    background-size: 100%;
+    transition: background-position 15s linear;
+}
+
+.container .iphone:hover .imgBx{
+    background-position: bottom;
+}
+
+@media (max-width: 1100px){
+    .container{
+        flex-direction: column;
+    }
+    .container .mac{
+        position: relative;
+        left: auto;
+        margin-top: 40px;
+    }
+    .container .macBook{
+        position: relative;
+        left: auto;
+        margin-top: 40px;
+    }
+    .container .iphone{
+        position: relative;
+        left: auto;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 600px){
+    .container .mac{
+        width: 90%;
+    }
+    .container .mac img{
+        width: 100%;
+    }
+    .container .mac .imgBx{
+        width: calc(100% * 555 / 606);
+        height: calc(100% * 313 / 489);
+        top: calc(100% * 25 / 606);
+        left: calc(100% * 25 / 606);
+    }
+
+    .container .macBook{
+        width: 90%;
+    }
+    .container .macBook img{
+        width: 100%;
+    }
+    .container .macBook .imgBx{
+        width: calc(100% * 465 / 609);
+        height: calc(100% * 291 / 362);
+        top: calc(100% * 20 / 609);
+        left: calc(100% * 72 / 609);
+    }
+
+    .container .iphone{
+        width: 90%;
+        max-width: 157px;
+    }
+    .container .iphone img{
+        width: 100%;
+    }
+    .container .iphone .imgBx{
+        width: calc(100% * 161 / 245);
+        height: calc(100% * 287 / 383);
+        top: calc(100% *  42 / 383);
+        left: calc(100% * 42 / 245);
+    }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7a538433c3.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="search-box">
+        <input type="text" placeholder="Введите для поиска...">
+        <div class="search-btn">
+            <i class="fa fa-search"></i>
+        </div>
+        <div class="cancel-btn">
+            <i class="fa fa-times"></i>
+        </div>
+        <div class="search-data"></div>
+    </div>
+    <script>
+        const searchBtn = document.querySelector('.search-btn');
+        const searchBox = document.querySelector('.search-box');
+        const cancelBtn = document.querySelector('.cancel-btn');
+        const searchInput = document.querySelector('input');
+
+        const searchData = document.querySelector('.search-data');
+
+        searchBtn.onclick = () => {
+            searchBtn.classList.add('active');
+            searchBox.classList.add('active');
+            cancelBtn.classList.add('active');
+            searchInput.classList.add('active');
+
+            if(searchInput.value != ""){
+                searchData.classList.remove('active');
+                let value = searchInput.value;
+                /*
+                if(value == "keklol"){
+                    searchData.innerHTML = "cheburek tu";
+                }
+                else if(value == "kek"){
+                    searchData.innerHTML = "lol";
+                }
+                else{
+                    searchData.innerHTML = "Вы только что набрали " + value;
+                }
+                */
+               switch(value){
+                    case "kek":    searchData.innerHTML = "lol"; break;
+                    case "lol":    searchData.innerHTML = "kek"; break;
+                    case "keklol": searchData.innerHTML = "orbidol"; break;
+                    case "lolkek": searchData.innerHTML = "cheburek"; break;
+                    case "kek":    searchData.innerHTML = "lol"; break;
+                    default:       searchData.innerHTML = "Вы только что набрали " + value;
+
+               }
+            }
+            else{
+                searchData.innerHTML = "";
+            }            
+        }
+
+        cancelBtn.onclick = () => {
+            searchBtn.classList.remove('active');
+            searchBox.classList.remove('active');
+            cancelBtn.classList.remove('active');
+            searchInput.classList.remove('active');
+
+            searchData.classList.add('active');
+            searchInput.value = "";
+        }
+
+    </script>
+</body>
+</html>
