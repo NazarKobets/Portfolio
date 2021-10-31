@@ -1,51 +1,98 @@
-const wordEl = document.getElementById('');
-const wrongLettersEl = document.getElementById('');
-const playAgainBtn = document.getElementById('');
-const popup = document.getElementById('');
-const notification = document.getElementById('');
-const finalMessage = document.getElementById('');
-const finalMessageRevealWord = document.getElementById('');
+const wordEl = document.getElementById('word');
+const wrongLettersEl = document.getElementById('wrong-letters');
+const playAgainBtn = document.getElementById('play-button');
+const popup = document.getElementById('popup-container');
+const notification = document.getElementById('notification-container');
+const finalMessage = document.getElementById('final-message');
+const finalMessageRevealWord = document.getElementById('final-message-reveal-word');
 
-const figureParts = document.querySelectorAll('.f');
+const figureParts = document.querySelectorAll('.figure-part');
 
-const words = [];
+const words = ['game', 'question', 'apple', 'ship', 'space', 'flame', 'word', 'random'];
 
-let selectedWord;
+let selectedWord = words[Math.floor(Math.random() * words.length)];
 
-let playable;
+let playable = true;
 
-let correctLetters;
-let wrongLetters;
+let correctLetters = [];
+let wrongLetters = [];
 
 // Show hidden word
 function displayWord() {
+	wordEl.innerHTML = `
+	${selectedWord
+			.split('')
+			.map(
+				letter => `
+			  <span class="letter">
+			  ${correctLetters.includes(letter) ? letter : ''}
+			  </span>
+			`
+			)
+			.join('')
+		}
+  `;
 
+
+	const innerWord = wordEl.innerText.replace(/\n/g, '');
+	if (innerWord === selectedWord) {
+		finalMessage.innerText = 'Congratulations! You won mishkFrede!';
+		finalMessageRevealWord.innerText = '';
+		popup.style.display = 'flex';
+		playable = false;
+	}
 }
 
 // Update the wrong letters
 function updateWrongLettersEl() {
+	wrongLettersEl.innerHTML = `
+	${wrongLetters.length > 0 ? '<p>Wrong</p>' : ''}
+	${wrongLetters.map(letter => `<span>${letter}</span>`)}
+  `;
 
+	figureParts.forEach((part, index) => {
+		const errors = wrongLetters.length;
+
+		if (index < errors) {
+			part.style.display = 'block';
+		} else {
+			part.style.display = 'none';
+		}
+	});
+
+	if (wrongLetters.length === figureParts.length) {
+		finalMessage.innerHTML = 'You lost';
+		finalMessageRevealWord.innerHTML = `...the word was: ${selectedWord}`;
+		popup.style.display = 'flex';
+		playable = false;
+	}
 }
 
 // Show notification
 function showNotification() {
-	
+	notification.classList.add('show');
+
+	setTimeout(() => {
+		notification.classList.remove('show');
+	}, 2000);
 }
 
 // Keydown letter press
 window.addEventListener('keydown', e => {
-	if (undefined) {
-		if (undefined) {
-
-			if (undefined) {
-				if (undefined) {
-
+	if (playable) {
+		if (e.keyCode >= 65 && e.keyCode <= 90) {
+			const letter = e.key.toLowerCase();
+			if (selectedWord.includes(letter)) {
+				if (!correctLetters.includes(letter)) {
+					correctLetters.push(letter);
+					displayWord();
 				} else {
 					showNotification();
 				}
 			} else {
-				if (undefined) {
-
+				if (!wrongLetters.includes(letter)) {
+					wrongLetters.push(letter);
+					updateWrongLettersEl();
 				} else {
 					showNotification();
 				}
@@ -54,4 +101,19 @@ window.addEventListener('keydown', e => {
 	}
 });
 
-// Restart game and play again
+displayWord();
+
+playAgainBtn.addEventListener('click', () => {
+	playable = true;
+
+	correctLetters.splice(0);
+	wrongLetters.splice(0);
+
+	selectedWord = words[Math.floor(Math.random() * words.length)];
+
+	displayWord();
+
+	updateWrongLettersEl();
+
+	popup.style.display = 'none';
+});
